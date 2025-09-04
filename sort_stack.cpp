@@ -4,7 +4,7 @@
 using namespace std ;
 
 void sortedinsert(stack<int>& stac,int num){
-    if(!stac.empty() && num>stac.top()){ 
+    if(stac.empty() || num>stac.top()){ 
         stac.push(num);
         return ;
     }
