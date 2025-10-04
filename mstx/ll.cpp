@@ -45,17 +45,16 @@
 //             head = newNode;
 //         }
 //         Node *temp = head;
-//         for(int i =1;i<pos-1 && temp!=NULL;i++){
+//         for(int i =1;i<pos-1 && temp!=NULL;i++){temp = temp->next;}
 //             if(temp==NULL){
 //                 cout<<"out of range"<<endl;
 //                 return;
 //             }
-//             temp = temp->next;
 //             newNode->next = temp->next;
 //             temp->next= newNode;
 //         }
 
-//     }
+//     
 
 //     void display(){
 //         Node* temp = head;

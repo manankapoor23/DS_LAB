@@ -16,7 +16,6 @@ class CLL{
     public:
     Node* head;
     CLL(){
-        cout<<"const called";
         head = NULL;
     }
     void insert(int val){
