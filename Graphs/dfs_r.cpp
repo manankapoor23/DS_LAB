@@ -9,7 +9,7 @@ void DFS(int node , vector<int> adj[],vector<bool> &vis,vector<int> &ls){
     cout<<node<<" ";
     for(auto it:adj[node]){
         if(!vis[it]){
-            DFS(it,adj,vis,ls);
+            DFS(it,adj,vis,ls); // recursive call
         }
     }
 
