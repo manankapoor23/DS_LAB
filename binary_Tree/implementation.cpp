@@ -2,99 +2,98 @@
 #include <queue>
 using namespace std;
 
-class Node{
-    public:
+class Node {
+public:
     int data;
     Node* left;
     Node* right;
-    public:
-    Node(int val){
-        this->data=val;
-        left=right=NULL;
-    }
 
+    Node(int val) {
+        data = val;
+        left = right = NULL;
+    }
 };
 
-/* Types of traversals ( ways to visit nodes ) */
-// 1. BFS (breadth first search)
-//    -> level order ( top to bottom , left to right )
-// 2. DFS (depth first search)
-//    ->Inorder (Left → Root → Right)
-//    ->Preorder (Root → Left → Right)
-//    ->Postorder (Left → Right → Root)
-Node* buildTree(){
-        Node* root = new Node(1);
-        root->left = new Node(2);
-        root->right = new Node(3);
-        root->left->right = new Node(5);
-        root->left->left =  new Node(6);
-        root->right->right = new Node(10);
-    
-        return root;
+// Insert into BST
+Node* insertBST(Node* root, int val) {
+    if (root == NULL) {
+        return new Node(val);
     }
+    if (val < root->data) {
+        root->left = insertBST(root->left, val);
+    } else {
+        root->right = insertBST(root->right, val);
+    }
+    return root;
+}
 
-// level order 
-void levelOrder(Node* root){
-    if(root==NULL){
-        return;
-    }
+// Level order traversal (BFS)
+void levelOrder(Node* root) {
+    if (root == NULL) return;
+
     queue<Node*> q;
     q.push(root);
-    while(!q.empty()){
+
+    while (!q.empty()) {
         Node* curr = q.front();
         q.pop();
-        cout<<curr->data<<" ";
-        if(curr->left!=NULL){
-            q.push(curr->left);
-        }
-        if(curr->right!=NULL){
-            q.push(curr->right);
-        }
+        cout << curr->data << " ";
+
+        if (curr->left) q.push(curr->left);
+        if (curr->right) q.push(curr->right);
     }
 }
 
-// inorder traversal
-void inorder(Node* root){
-    if(root==NULL){
-        return;
-    }
+// Inorder (L, Root, R) — sorted for BST
+void inorder(Node* root) {
+    if (!root) return;
     inorder(root->left);
-    cout<<root->data<<" ";
+    cout << root->data << " ";
     inorder(root->right);
 }
 
-// preorder traversal
-void preOrder(Node* root){
-    if(root ==NULL){
-        return;
-    }
-    cout<<root->data<<" ";
+// Preorder (Root, L, R)
+void preOrder(Node* root) {
+    if (!root) return;
+    cout << root->data << " ";
     preOrder(root->left);
     preOrder(root->right);
-
 }
 
-// postorder traversal
-void postOrder(Node* root){
-    if(root==NULL){
-        return;
-    }
+// Postorder (L, R, Root)
+void postOrder(Node* root) {
+    if (!root) return;
     postOrder(root->left);
     postOrder(root->right);
-    cout<<root->data<<" ";
+    cout << root->data << " ";
 }
 
-int main(){
-    // Example usage of levelOrder can be added he
-    Node* root = buildTree();
+int main() {
+    Node* root = NULL;
+
+    // Insert your numbers into BST
+    int values[] = {15, 18, 6, 7, 17, 3, 4, 13, 9, 20, 2};
+    int n = sizeof(values) / sizeof(values[0]);
+
+    for (int i = 0; i < n; i++) {
+        root = insertBST(root, values[i]);
+    }
+
+    cout << "Level Order (BFS): ";
     levelOrder(root);
-    cout<<endl;
+    cout << "\n";
+
+    cout << "Inorder (sorted): ";
     inorder(root);
-    cout<<endl;
+    cout << "\n";
+
+    cout << "Preorder: ";
     preOrder(root);
-    cout<<endl;
+    cout << "\n";
+
+    cout << "Postorder: ";
     postOrder(root);
+    cout << "\n";
+
     return 0;
 }
-
-
