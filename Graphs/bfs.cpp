@@ -4,7 +4,7 @@
 using namespace std;
 // BFS ON GRAPH using queue and adjacency list
 
-void BFS(int start,vector<int> adj[],int n){
+void BFS( int start , vector<int> adj[] ,int n ){
     vector<bool> visited(n,false); // vector of n size with all values of not visited
     queue<int> q;
 
@@ -32,6 +32,8 @@ void BFS(int start,vector<int> adj[],int n){
 }
 
 
+
+
 int main(){
     int n, m;
     cout << "Enter number of nodes: ";
@@ -44,8 +46,8 @@ int main(){
     for(int i =0;i<m;i++){
         int u,v;
         cin>>u>>v;
-        adj[u].push_back(v);
-        adj[v].push_back(u);
+        adj[u].push_back(v); // v neighbor of u
+        adj[v].push_back(u); // u neighbor of v
     }
 
     int start;

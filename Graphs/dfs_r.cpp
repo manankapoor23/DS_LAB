@@ -4,12 +4,12 @@
 
 using namespace std;
 
-void DFS(int node , vector<int> adj[],vector<bool> &vis,vector<int> &ls){
+void DFS(int node , vector<int> adj[],vector<bool> &vis){
     vis[node]=true;
     cout<<node<<" ";
     for(auto it:adj[node]){
         if(!vis[it]){
-            DFS(it,adj,vis,ls); // recursive call
+            DFS(it,adj,vis); // recursive call
         }
     }
 
@@ -35,6 +35,6 @@ int main(){
     int start;
     cout<<"Enter starting node :";
     cin>>start;
-    vector<int> mi;
-    DFS(start,adj,vis,mi);
+    
+    DFS(start,adj,vis);
 }
