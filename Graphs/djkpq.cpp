@@ -1,26 +1,54 @@
 #include <iostream>
 #include <set>
-
+#include <vector>
 using namespace std;
 
 vector<int> dijkstra(int N , vector<vector<pair<int,int>>> &adj , int S){
-    vector<int> dist(N);
-    for(int i =0;i<N;i++){
-        dist[i]=INT_MAX;
-    }
-    dist[S]=0;
+    // here N is number of nodes and S is the starting node
+    
+    // make a visited array but of infinite distances
+    // vector<int> dist(N,INT_MAX);
+    // dist[S]=0;
 
+    // set<pair<int,int>> st;
+    // st.insert({0,S}); // set of distance , node
+
+    // while(!st.empty()){
+
+    //     auto it = *(st.begin());
+    //     st.erase(st.begin());
+
+    //     int distance = it.first;
+    //     int node = it.second;
+
+    //     for(auto &it2 : adj[node]){
+    //         int adjNode = it2.first;
+    //         int edgeWeight = it2.second;
+
+    //         if(distance + edgeWeight<dist[adjNode]){
+    //             if(dist[adjNode]!=INT_MAX){
+    //                 st.erase({dist[adjNode],adjNode});
+    //             }
+    //             dist[adjNode]=distance+edgeWeight;
+    //             st.insert({dist[adjNode],adjNode});
+    //         }
+
+    //     }
+    // }
+    // return dist;
+    vector<int> dist(N,INT_MAX);
     set<pair<int,int>> st;
+
     st.insert({0,S});
+    dist[S]=0;
 
     while(!st.empty()){
         auto it = *(st.begin());
-
+        st.erase(it);
         int distance = it.first;
         int node = it.second;
-        st.erase(it);
 
-        for(auto it : adj[node]){
+        for(auto &it : adj[node]){
             int adjNode = it.first;
             int edgeWeight = it.second;
 
@@ -32,11 +60,8 @@ vector<int> dijkstra(int N , vector<vector<pair<int,int>>> &adj , int S){
                 st.insert({dist[adjNode],adjNode});
             }
         }
-
-
     }
     return dist;
-
 }
 
 int main() {
@@ -48,6 +73,7 @@ int main() {
     adj[0].push_back({1, 2}); // what is 1 and 2 here 
     // 1 is the adjacent node and 2 is the weight of edge
     // what is 0 here ? 0 is the current node and it means from 0 to 1 weight is 2
+    // can i keep the format same ? like for it.second i can keep weight and for it.first i can keep node
     adj[1].push_back({0, 2});
 
     adj[0].push_back({2, 4});
