@@ -26,8 +26,8 @@ void inorder(Tree *t, vector<int> &store)
         return;
     }
     inorder(t->left, store);
-    inorder(t->right, store);
     store.push_back(t->data);
+    inorder(t->right, store);
 }
 
 int main()
