@@ -38,8 +38,6 @@ class Stack{
         head = head->next;
         delete temp;
     }
-
-
 };
 
 int main(){

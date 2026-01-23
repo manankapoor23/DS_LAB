@@ -5,6 +5,7 @@ const int MAX_SIZE = 100 ;
 class Stack{
     private:
     int arr[MAX_SIZE];
+    int arr2[MAX_SIZE];
     int top;
     public:
     Stack(){
@@ -17,12 +18,14 @@ class Stack{
         }
         top = top+1;
         arr[top]=x;
+
     }
     int pop(){
         if(top<0){
             cout<<"stack underflow"<<endl;
             return -1;
         }
+
         return arr[top--];
     }
     int peek(){

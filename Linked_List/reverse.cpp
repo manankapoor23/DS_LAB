@@ -33,16 +33,16 @@ class Linked{
 
     void reverse(){
         Node* prev =NULL;
-        Node* curr = head;
+        Node* temp = head;
         Node* front;
-        if(curr==NULL || curr->next==NULL){
+        if(temp==NULL || temp->next==NULL){
             return;
         }
-        while(curr!=NULL){
-            front=curr->next;
-            curr->next=prev;
-            prev=curr;
-            curr=front;
+        while(temp!=NULL){
+            front=temp->next;
+            temp->next=prev;
+            prev=temp;
+            temp=front;
         }
         head=prev;
     }

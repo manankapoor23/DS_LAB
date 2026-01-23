@@ -29,7 +29,7 @@ class Solution{
 };
 
 int main(){
-    string str = "{{}}{({{)}})}";
+    string str = " [()]{}{[()()}";
     Solution s ;
     cout<<(s.isValid(str)); // returns 0 for false 
 }
