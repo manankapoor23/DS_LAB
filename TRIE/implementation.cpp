@@ -1,7 +1,7 @@
 #include <iostream>
 #include <string>
 using namespace std;
-
+// implementation of TRIE data structure
 class TrieNode{
     public:
     bool isEnd;
